@@ -14,7 +14,6 @@ namespace Projekt_Przychodnia_weterynaryjna
         private DateTime data_urodzenia;
         private string pesel;
         private Plcie plec;
-        
 
         public string Imie { get => imie; set => imie = value; }
         public string Nazwisko { get => nazwisko; set => nazwisko = value; }
