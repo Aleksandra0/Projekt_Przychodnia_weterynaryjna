@@ -8,7 +8,8 @@ namespace Projekt_Przychodnia_weterynaryjna
     {
         private int id;
         /* private string przebyte_choroby; //???
-        private string przyjmowane_leki; //??? */
+        private string przyjmowane_leki; //??? 
+        private string szczepienia //??? */
         private List<Klient> wlasciciele;
 
         public int Id { get => id; set => id = value; }
