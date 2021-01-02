@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
-    abstract class Zwierze
+    public abstract class Zwierze
     {
         public enum Plcie_zwierzat { samiec, samica };
 

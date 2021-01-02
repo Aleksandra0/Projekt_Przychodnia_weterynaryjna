@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
-    abstract class Osoba
+    public abstract class Osoba
     {
         public enum Plcie { K, M, I } //I - other
 
