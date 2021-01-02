@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Projekt_Przychodnia_weterynaryjna
@@ -32,6 +33,20 @@ namespace Projekt_Przychodnia_weterynaryjna
             this.data_urodzenia = data_urodzenia;
             this.pesel = pesel;
             this.plec = plec;
+        }
+
+        public Osoba(string imie, string nazwisko, string data_urodzenia, string pesel, Plcie plec)
+        {
+            this.imie = imie;
+            this.nazwisko = nazwisko;
+            DateTime.TryParseExact(data_urodzenia, new[] { "yyyy-MM-dd", "yyyy/MM/dd", "yyyy.MM.dd", "dd-MM-yyyy", "dd/MM/yyyy", "dd.MM.yyyy" }, null, DateTimeStyles.None, out this.data_urodzenia);
+            this.pesel = pesel;
+            this.plec = plec;
+        }
+
+        public override string ToString()
+        {
+            return this.imie + " " + this.Nazwisko + " " + this.Data_urodzenia.ToString("dd-MM-yyyy") + " " + this.pesel + " " + this.plec + " ";
         }
 
 
