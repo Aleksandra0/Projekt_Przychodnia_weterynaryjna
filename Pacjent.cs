@@ -9,26 +9,38 @@ namespace Projekt_Przychodnia_weterynaryjna
         private int id;
         /* private string przebyte_choroby; //???
         private string przyjmowane_leki; //??? */
-        private string wlasciciele; //docelowo lista
+        private List<Klient> wlasciciele;
 
         public int Id { get => id; set => id = value; }
-        public string Wlasciciele { get => wlasciciele; set => wlasciciele = value; }
+        public List<Klient> Wlasciciele { get => wlasciciele; set => wlasciciele = value; }
 
-        public Pacjent(string imie, DateTime data_urodzenia, Plcie_zwierzat plec, string gatunek, string rasa, string barwa, string znaki_szczegolne, int id, string wlasciciele) : base(imie, data_urodzenia, plec, gatunek, rasa, barwa, znaki_szczegolne)
+        public Pacjent(string imie, DateTime data_urodzenia, Plcie_zwierzat plec, string gatunek, string rasa, string barwa, string znaki_szczegolne, int id) : base(imie, data_urodzenia, plec, gatunek, rasa, barwa, znaki_szczegolne)
         {
             this.Id = id;
-            this.Wlasciciele = wlasciciele;
+            Wlasciciele = new List<Klient>();
         }
 
-        public Pacjent(string imie, string data_urodzenia, Plcie_zwierzat plec, string gatunek, string rasa, string barwa, string znaki_szczegolne, int id, string wlasciciele) : base(imie, data_urodzenia, plec, gatunek, rasa, barwa, znaki_szczegolne)
+        public Pacjent(string imie, string data_urodzenia, Plcie_zwierzat plec, string gatunek, string rasa, string barwa, string znaki_szczegolne, int id) : base(imie, data_urodzenia, plec, gatunek, rasa, barwa, znaki_szczegolne)
         {
             this.Id = id;
-            this.Wlasciciele = wlasciciele;
+            Wlasciciele = new List<Klient>();
+        }
+
+        public void DodajWlasciciela(Klient wlasciciel)
+        {
+            this.wlasciciele.Add(wlasciciel);
         }
 
         public override string ToString()
         {
-            return this.Id + " " + base.ToString() + " " + this.Wlasciciele;
+            StringBuilder stringBuilder = new StringBuilder("\nWlasciciele: \n");
+            foreach (Klient wlasciciel in Wlasciciele)
+            {
+                stringBuilder.AppendLine(wlasciciel.Imie = wlasciciel.Nazwisko);
+            }
+            return this.Id + " " + base.ToString() + " " + stringBuilder.ToString();
         }
+
+
     }
 }
