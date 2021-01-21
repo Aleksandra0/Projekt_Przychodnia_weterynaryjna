@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
-    class Lekarz : Osoba, IZarzadzanie_pacjentami
+    public class Lekarz : Osoba, IZarzadzanie_pacjentami
     {
         private string numer_telefonu;
         private string email;

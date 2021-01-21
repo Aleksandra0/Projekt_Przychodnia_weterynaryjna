@@ -7,7 +7,6 @@ namespace Projekt_Przychodnia_weterynaryjna
 	{
 		public enum Typ_choroby {wirusowa,bakteryjna, grzybiczna, pasozytnicza};
 		public enum Pasozyty {brak, pchly, kleszcze, p_wewnetrzne, wszy};
-
 		private string nazwa_choroby;
 		private DateTime data_choroby;
 		private Pasozyty pasozyty;
