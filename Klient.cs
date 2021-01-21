@@ -8,7 +8,6 @@ using System.Xml.Serialization;
 namespace Projekt_Przychodnia_weterynaryjna
 {
     [Serializable]
-
     class peselComparator : Comparer<Klient>
     {
         public override int Compare(Klient x, Klient y)
