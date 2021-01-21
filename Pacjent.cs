@@ -85,15 +85,11 @@ namespace Projekt_Przychodnia_weterynaryjna
             wlasciciele.Sort();
         }*/
 
-        /*public object Clone()
+        public object Clone()
         {
             Pacjent klon = this.MemberwiseClone() as Pacjent;
-            //klon.Kierownik = this.Kierownik.Clone() as KierownikZespolu;
-            klon.wlasciciele = new List<Klient>();
-            foreach (Klient wlasciciel in wlasciciele)
-                klon.wlasciciele.Add(wlasciciel.Clone() as Klient);
             return klon;
-        }*/
+        }
 
         /*public Pacjent DeepClone()
         {

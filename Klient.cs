@@ -106,14 +106,13 @@ namespace Projekt_Przychodnia_weterynaryjna
                 return this.Imie.CompareTo(other.Imie);
         }
 
-        /*public object Clone()
+        public object Clone()
         {
             Klient klon = this.MemberwiseClone() as Klient;
-            //klon.Kierownik = this.Kierownik.Clone() as KierownikZespolu;
             klon.zwierzeta = new List<Pacjent>();
             foreach (Pacjent pacjent in zwierzeta)
-                klon.zwierzeta.Add(pacjent.Clone() as Klient);
+                klon.zwierzeta.Add(pacjent.Clone() as Pacjent);
             return klon;
-        }*/
+        }
     }
 }
