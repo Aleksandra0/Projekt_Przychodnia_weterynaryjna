@@ -55,5 +55,6 @@ namespace Projekt_Przychodnia_weterynaryjna
         {
             return this.pesel == other.pesel;
         }
+        //potrzebna zmiana
     }
 }
