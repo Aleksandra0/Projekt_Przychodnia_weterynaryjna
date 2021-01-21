@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
-    class Lekarz : Osoba
+    class Lekarz : Osoba, IZarzadzanie_pacjentami
     {
         private string numer_telefonu;
         private string email;
@@ -40,12 +40,6 @@ namespace Projekt_Przychodnia_weterynaryjna
             Pacjenci = new List<Pacjent>();
         }
 
-        public void DodajPacjenta(Pacjent zwierze)
-        {
-            this.pacjenci.Add(zwierze);
-        }
-
-
         public override string ToString()
         {
             StringBuilder stringBuilder1 = new StringBuilder("\nZwierzeta: \n");
@@ -56,7 +50,27 @@ namespace Projekt_Przychodnia_weterynaryjna
             return this.tytuly + " " + base.ToString() + " " + this.numer_telefonu + " " + this.email + " " + this.specjalizacja + " " + this.staz_pracy + " " + stringBuilder1.ToString();
         }
 
+        public void Dodaj_pacjenta(Pacjent p)
+        {
+            this.pacjenci.Add(p);
+        }
 
+        public void Usun_pacjenta(int id)
+        {
+            foreach (Pacjent p in this.pacjenci)
+            {
+                if (p.Id == id)
+                {
+                    pacjenci.Remove(p);
+                    break;
+                }
+            }
+        }
+
+        public void Wyczysc_liste()
+        {
+            this.pacjenci.Clear();
+        }
 
     }
 }

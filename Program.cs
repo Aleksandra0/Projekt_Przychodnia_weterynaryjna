@@ -15,22 +15,26 @@ namespace Projekt_Przychodnia_weterynaryjna
 
             Pacjent pacjent1 = new Pacjent("Felicja", "01.12.2015", Zwierze.Plcie_zwierzat.samica, "kot", "dachowiec", "czarna", "duże oczy", 1);
             Pacjent pacjent2 = new Pacjent("Felix", "01.12.2015", Zwierze.Plcie_zwierzat.samiec, "kot", "dachowiec", "czarna", "duże oczy", 2);
-            pacjent1.DodajWlasciciela(klient1);
-            pacjent1.DodajWlasciciela(klient2);
-            pacjent2.DodajWlasciciela(klient2);
+            pacjent1.Dodaj_wlasciciela(klient1);
+            pacjent1.Dodaj_wlasciciela(klient2);
+            pacjent2.Dodaj_wlasciciela(klient2);
 
-            klient1.DodajZwierze(pacjent1);
-            klient2.DodajZwierze(pacjent1);
-            klient2.DodajZwierze(pacjent2);
+            klient1.Dodaj_pacjenta(pacjent1);
+            klient2.Dodaj_pacjenta(pacjent1);
+            klient2.Dodaj_pacjenta(pacjent2);
 
-            lekarz1.DodajPacjenta(pacjent1);
-            lekarz1.DodajPacjenta(pacjent2);
+            lekarz1.Dodaj_pacjenta(pacjent1);
+            lekarz1.Dodaj_pacjenta(pacjent2);
 
             Console.WriteLine(lekarz1.ToString());
             Console.WriteLine(klient1.ToString());
             Console.WriteLine(klient2.ToString());
             Console.WriteLine(pacjent1.ToString());
             Console.WriteLine(pacjent2.ToString());
+
+            pacjent1.Usun_wlasciciela("00389674590");
+            Console.WriteLine("Po usunięciu: ");
+            Console.WriteLine(pacjent1.ToString());
         }
     }
 }
