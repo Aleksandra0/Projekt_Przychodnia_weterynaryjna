@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
+
     public abstract class Zwierze
     {
         public enum Plcie_zwierzat { samiec, samica };

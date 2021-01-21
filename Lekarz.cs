@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
-    class Lekarz : Osoba
+    [Serializable]
+    class Lekarz : Osoba, IComparable<Lekarz>//, ICloneable
     {
         private string numer_telefonu;
         private string email;
@@ -57,6 +60,50 @@ namespace Projekt_Przychodnia_weterynaryjna
         }
 
 
+        public void ZapiszXML(string nazwa)
+        {
+            using (StreamWriter writer = new StreamWriter(nazwa))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Lekarz));
+                serializer.Serialize(writer, this);
+            }
+        }
 
+        public Lekarz OdczytajXML(string nazwa)
+        {
+            using (StreamReader reader = new StreamReader(nazwa))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Lekarz));
+                return serializer.Deserialize(reader) as Lekarz;
+            }
+        }
+        public int CompareTo(Lekarz other)
+        {
+            if (this.Nazwisko != other.Nazwisko)
+                return this.Nazwisko.CompareTo(other.Nazwisko);
+            else
+                return this.Imie.CompareTo(other.Imie);
+        }
+
+        /*public void Sortuj()
+        {
+            pacjenci.Sort();
+        }*/
+
+
+        /*public void SortujPoid()
+        {
+            pacjenci.Sort(new idComparator());
+        }*/
+
+        /*public object Clone()
+        {
+            Lekarz klon = this.MemberwiseClone() as Lekarz;
+            //klon.Kierownik = this.Kierownik.Clone() as KierownikZespolu;
+            klon.pacjenci = new List<Pacjent>();
+            foreach (Pacjent pacjent in pacjenci)
+                klon.pacjenci.Add(pacjent.Clone() as Klient);
+            return klon;
+        }*/
     }
 }

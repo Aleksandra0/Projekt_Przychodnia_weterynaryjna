@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
@@ -48,8 +50,5 @@ namespace Projekt_Przychodnia_weterynaryjna
         {
             return this.imie + " " + this.Nazwisko + " " + this.Data_urodzenia.ToString("dd-MM-yyyy") + " " + this.pesel + " " + this.plec + " ";
         }
-
-
-
     }
 }

@@ -1,11 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
-    public class Klient : Osoba
+    [Serializable]
+
+    class peselComparator : Comparer<Klient>
+    {
+        public override int Compare(Klient x, Klient y)
+        {
+            return x.Pesel.CompareTo(y.Pesel);
+        }
+    }
+    public class Klient : Osoba, IComparable<Klient>
     {
         private string numer_telefonu;
         private string email;
@@ -49,5 +60,40 @@ namespace Projekt_Przychodnia_weterynaryjna
         }
 
 
+        public void ZapiszXML(string nazwa)
+        {
+            using (StreamWriter writer = new StreamWriter(nazwa))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Klient));
+                serializer.Serialize(writer, this);
+            }
+        }
+
+        public Klient OdczytajXML(string nazwa)
+        {
+            using (StreamReader reader = new StreamReader(nazwa))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Klient));
+                return serializer.Deserialize(reader) as Klient;
+            }
+        }
+
+        public int CompareTo(Klient other)
+        {
+            if (this.Nazwisko != other.Nazwisko)
+                return this.Nazwisko.CompareTo(other.Nazwisko);
+            else
+                return this.Imie.CompareTo(other.Imie);
+        }
+
+        /*public object Clone()
+        {
+            Klient klon = this.MemberwiseClone() as Klient;
+            //klon.Kierownik = this.Kierownik.Clone() as KierownikZespolu;
+            klon.zwierzeta = new List<Pacjent>();
+            foreach (Pacjent pacjent in zwierzeta)
+                klon.zwierzeta.Add(pacjent.Clone() as Klient);
+            return klon;
+        }*/
     }
 }

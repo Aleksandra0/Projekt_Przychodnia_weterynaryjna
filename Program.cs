@@ -31,6 +31,17 @@ namespace Projekt_Przychodnia_weterynaryjna
             Console.WriteLine(klient2.ToString());
             Console.WriteLine(pacjent1.ToString());
             Console.WriteLine(pacjent2.ToString());
+
+            /*lekarz1.ZapiszXML("Lekarz.xml");
+            Lekarz L2 = Lekarz.OdczytajXML("Lekarz.xml");
+
+            klient1.ZapiszXML("Klient.xml");
+            Klient K2 = Klient.OdczytajXML("Klient.xml");
+
+            pacjent1.ZapiszXML("Klient.xml");
+            Pacjent P2 = Pacjent.OdczytajXML("Klient.xml");*/
+
+
         }
     }
 }
