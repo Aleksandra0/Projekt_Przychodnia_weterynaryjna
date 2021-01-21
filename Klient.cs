@@ -1,21 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Text;
-using System.Xml.Serialization;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
-    [Serializable]
-    class peselComparator : Comparer<Klient>
-    {
-        public override int Compare(Klient x, Klient y)
-        {
-            return x.Pesel.CompareTo(y.Pesel);
-        }
-    }
-    public class Klient : Osoba, IComparable<Klient>
+    public class Klient : Osoba, IZarzadzanie_pacjentami
     {
         private string numer_telefonu;
         private string email;
@@ -43,11 +33,6 @@ namespace Projekt_Przychodnia_weterynaryjna
             Zwierzeta = new List<Pacjent>();
         }
 
-        public void DodajZwierze(Pacjent zwierze)
-        {
-            this.zwierzeta.Add(zwierze);
-        }
-
         public override string ToString()
         {
             StringBuilder stringBuilder1 = new StringBuilder("\nZwierzeta: \n");
@@ -58,41 +43,26 @@ namespace Projekt_Przychodnia_weterynaryjna
             return base.ToString() + " " + this.numer_telefonu + " " + this.email + " " + this.adres + stringBuilder1.ToString();
         }
 
-
-        public void ZapiszXML(string nazwa)
+        public void Dodaj_pacjenta(Pacjent p)
         {
-            using (StreamWriter writer = new StreamWriter(nazwa))
+            this.zwierzeta.Add(p);
+        }
+
+        public void Usun_pacjenta(int id)
+        {
+            foreach (Pacjent p in this.zwierzeta)
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(Klient));
-                serializer.Serialize(writer, this);
+                if (p.Id == id)
+                {
+                    zwierzeta.Remove(p);
+                    break;
+                }
             }
         }
 
-        public Klient OdczytajXML(string nazwa)
+        public void Wyczysc_liste()
         {
-            using (StreamReader reader = new StreamReader(nazwa))
-            {
-                XmlSerializer serializer = new XmlSerializer(typeof(Klient));
-                return serializer.Deserialize(reader) as Klient;
-            }
+            this.zwierzeta.Clear();
         }
-
-        public int CompareTo(Klient other)
-        {
-            if (this.Nazwisko != other.Nazwisko)
-                return this.Nazwisko.CompareTo(other.Nazwisko);
-            else
-                return this.Imie.CompareTo(other.Imie);
-        }
-
-        /*public object Clone()
-        {
-            Klient klon = this.MemberwiseClone() as Klient;
-            //klon.Kierownik = this.Kierownik.Clone() as KierownikZespolu;
-            klon.zwierzeta = new List<Pacjent>();
-            foreach (Pacjent pacjent in zwierzeta)
-                klon.zwierzeta.Add(pacjent.Clone() as Klient);
-            return klon;
-        }*/
     }
 }

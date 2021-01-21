@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
-using System.Xml.Serialization;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
-    [Serializable]
-    class Lekarz : Osoba, IComparable<Lekarz>//, ICloneable
+    public class Lekarz : Osoba, IZarzadzanie_pacjentami
     {
         private string numer_telefonu;
         private string email;
@@ -43,12 +40,6 @@ namespace Projekt_Przychodnia_weterynaryjna
             Pacjenci = new List<Pacjent>();
         }
 
-        public void DodajPacjenta(Pacjent zwierze)
-        {
-            this.pacjenci.Add(zwierze);
-        }
-
-
         public override string ToString()
         {
             StringBuilder stringBuilder1 = new StringBuilder("\nZwierzeta: \n");
@@ -59,51 +50,27 @@ namespace Projekt_Przychodnia_weterynaryjna
             return this.tytuly + " " + base.ToString() + " " + this.numer_telefonu + " " + this.email + " " + this.specjalizacja + " " + this.staz_pracy + " " + stringBuilder1.ToString();
         }
 
-
-        public void ZapiszXML(string nazwa)
+        public void Dodaj_pacjenta(Pacjent p)
         {
-            using (StreamWriter writer = new StreamWriter(nazwa))
+            this.pacjenci.Add(p);
+        }
+
+        public void Usun_pacjenta(int id)
+        {
+            foreach (Pacjent p in this.pacjenci)
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(Lekarz));
-                serializer.Serialize(writer, this);
+                if (p.Id == id)
+                {
+                    pacjenci.Remove(p);
+                    break;
+                }
             }
         }
 
-        public Lekarz OdczytajXML(string nazwa)
+        public void Wyczysc_liste()
         {
-            using (StreamReader reader = new StreamReader(nazwa))
-            {
-                XmlSerializer serializer = new XmlSerializer(typeof(Lekarz));
-                return serializer.Deserialize(reader) as Lekarz;
-            }
-        }
-        public int CompareTo(Lekarz other)
-        {
-            if (this.Nazwisko != other.Nazwisko)
-                return this.Nazwisko.CompareTo(other.Nazwisko);
-            else
-                return this.Imie.CompareTo(other.Imie);
+            this.pacjenci.Clear();
         }
 
-        /*public void Sortuj()
-        {
-            pacjenci.Sort();
-        }*/
-
-
-        /*public void SortujPoid()
-        {
-            pacjenci.Sort(new idComparator());
-        }*/
-
-        /*public object Clone()
-        {
-            Lekarz klon = this.MemberwiseClone() as Lekarz;
-            //klon.Kierownik = this.Kierownik.Clone() as KierownikZespolu;
-            klon.pacjenci = new List<Pacjent>();
-            foreach (Pacjent pacjent in pacjenci)
-                klon.pacjenci.Add(pacjent.Clone() as Klient);
-            return klon;
-        }*/
     }
 }
