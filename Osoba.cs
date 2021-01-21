@@ -9,7 +9,7 @@ namespace Projekt_Przychodnia_weterynaryjna
 {
     public abstract class Osoba : IEquatable<Osoba>
     {
-        public enum Plcie { K, M, I } //I - other
+        public enum Plcie { K, M, I } //I - other (inna)
 
         private string imie;
         private string nazwisko;
