@@ -25,7 +25,11 @@ namespace Projekt_Przychodnia_weterynaryjna
 
         public Osoba()
         {
-
+            this.imie = null;
+            this.nazwisko = null;
+            this.data_urodzenia = DateTime.Today;
+            this.pesel = null;
+            this.plec = Plcie.K;
         }
 
         public Osoba(string imie, string nazwisko, DateTime data_urodzenia, string pesel, Plcie plec)

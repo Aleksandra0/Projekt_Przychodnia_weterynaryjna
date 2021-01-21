@@ -30,7 +30,13 @@ namespace Projekt_Przychodnia_weterynaryjna
 
         public Zwierze()
         {
-
+            this.Imie = null;
+            this.Data_urodzenia = DateTime.Today;
+            this.Plec = Plcie_zwierzat.samiec;
+            this.Gatunek = null;
+            this.Rasa = null;
+            this.Barwa = null;
+            this.Znaki_szczegolne = null;
         }
         public Zwierze(string imie, DateTime data_urodzenia, Plcie_zwierzat plec, string gatunek, string rasa, string barwa, string znaki_szczegolne)
         {

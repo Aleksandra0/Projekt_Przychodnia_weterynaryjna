@@ -19,7 +19,14 @@ namespace Projekt_Przychodnia_weterynaryjna
         public DateTime Data_szczepienia { get => data_szczepienia; set => data_szczepienia = value; }
 		public Rodzaj_szczepienia Rodzaj_Szczepienia { get => rodzaj_szczepienia; set => rodzaj_szczepienia = value; }
         public string Przeciw_czemu { get => przeciw_czemu; set => przeciw_czemu = value; }
-
+		
+		public Szczepienia()
+        {
+			this.Data_szczepienia = DateTime.Today;
+			this.Preparat = null;
+			this.Przeciw_czemu = null;
+			this.Data_nastepnego_szczepienia = DateTime.Today;
+		}
         public Szczepienia(DateTime data_szczepienia, string preparat, string przeciw_czemu, DateTime data_nastepnego_szczepienia)
 		{
 			this.Data_szczepienia = data_szczepienia;

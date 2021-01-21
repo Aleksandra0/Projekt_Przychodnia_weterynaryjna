@@ -26,6 +26,17 @@ namespace Projekt_Przychodnia_weterynaryjna
         public string Zalecenia { get => zalecenia; set => zalecenia = value; }
         public string Dolegliwosci { get => dolegliwosci; set => dolegliwosci = value; }
 
+		public Przebyte_choroby()
+        {
+			this.Nazwa_choroby = null;
+			this.Data_choroby = DateTime.Today;
+			this.Pasozyt = Pasozyty.brak;
+			this.Dolegliwosci = null;
+			this.Choroba = Typ_choroby.wirusowa;
+			this.Leki = null;
+			this.Zalecenia = null;
+			this.Wizyta_kontrolna = DateTime.Today;
+		}
         public Przebyte_choroby(string nazwa_choroby, DateTime data_choroby, Pasozyty pasozyty, string dolegliwosci, Typ_choroby choroba, string leki, string zalecenia, DateTime wizyta_kontrolna)
 		{
 			this.Nazwa_choroby = nazwa_choroby;
