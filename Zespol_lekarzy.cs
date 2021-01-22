@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
-    class Zespol_lekarzy 
+    public class Zespol_lekarzy : Lekarz
     {
         private Lekarz lekarz;
         private List<Lekarz> lekarze;
@@ -55,6 +55,16 @@ namespace Projekt_Przychodnia_weterynaryjna
         public void Sortuj()
         {
            Lekarze.Sort();
+        }
+
+        public override string ToString()
+        {
+            StringBuilder stringBuilder1 = new StringBuilder();
+            foreach (Lekarz lekarz in lekarze)
+            {
+                stringBuilder1.AppendLine(lekarz.ToString());
+            }
+            return stringBuilder1.ToString();
         }
     }
 }

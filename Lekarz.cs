@@ -55,7 +55,7 @@ namespace Projekt_Przychodnia_weterynaryjna
 
         public override string ToString()
         {
-            return this.tytuly + " " + base.ToString() + " " + this.numer_telefonu + " " + this.email + " " + this.specjalizacja + " " + this.staz_pracy;
+            return this.tytuly + " " + this.Imie + " " + this.Nazwisko + "\nNumer telefonu: " + this.numer_telefonu + "\nEmail: " + this.email + "\nSpecjalizacja: " + this.specjalizacja + "\nStaż pracy: " + this.staz_pracy + "\n\n";
         }
 
         public void ZapiszXML(string nazwa)

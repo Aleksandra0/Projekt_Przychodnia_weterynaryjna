@@ -52,7 +52,7 @@ namespace Projekt_Przychodnia_weterynaryjna
 
         public override string ToString()
         {
-            return this.imie + " " + this.Nazwisko + " " + this.Data_urodzenia.ToString("dd-MM-yyyy") + " " + this.pesel + " " + this.plec + " ";
+            return this.imie + " " + this.Nazwisko + "\n\nData urodzenia: " + this.Data_urodzenia.ToString("dd-MM-yyyy") + "\n\nPesel: " + this.pesel + "\n\n";
         }
 
         public bool Equals(Osoba other)
