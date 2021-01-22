@@ -53,6 +53,14 @@ namespace Projekt_Przychodnia_weterynaryjna
             this.wlasciciel = new Klient();
         }
 
+        public Pacjent(string imie, string data_urodzenia, Plcie_zwierzat plec, string gatunek, string rasa, string barwa, string znaki_szczegolne, int id, Klient wlasciciel) : base(imie, data_urodzenia, plec, gatunek, rasa, barwa, znaki_szczegolne)
+        {
+            this.Id = id;
+            Szczepienia = new List<Szczepienia>();
+            Przebyte_choroby = new List<Przebyte_choroby>();
+            this.wlasciciel = new Klient();
+        }
+
         public override string ToString()
         {
             return this.Id + " " + base.ToString();
