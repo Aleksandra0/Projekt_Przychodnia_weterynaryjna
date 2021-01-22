@@ -56,5 +56,16 @@ namespace Projekt_Przychodnia_weterynaryjna
         {
            Lekarze.Sort();
         }
+
+
+        public override string ToString()
+        {
+            StringBuilder builder = new StringBuilder();
+            foreach (var item in Lekarze)
+            {
+                builder.Append(item).AppendLine();
+            }
+            return builder.ToString();
+        }
     }
 }

@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
-    public class Klient : Osoba, IZarzadzanie_pacjentami , ICloneable
+    public class Klient : Osoba, IZarzadzanie_pacjentami, ICloneable
     {
         private string numer_telefonu;
         private string email;
@@ -43,13 +43,19 @@ namespace Projekt_Przychodnia_weterynaryjna
 
         public override string ToString()
         {
-            StringBuilder stringBuilder1 = new StringBuilder("\nZwierzeta: \n");
+            return base.ToString() + "Numer telefonu: " + this.numer_telefonu + "\n\nEmail: " + this.email + "\n\nAdres: " + this.adres;
+        }
+
+        public string ToString2()
+        {
+            StringBuilder stringBuilder1 = new StringBuilder("\nPupile: \n");
             foreach (Pacjent zwierze in Zwierzeta)
             {
-                stringBuilder1.AppendLine(zwierze.Imie + ": " + zwierze.Gatunek);
+                stringBuilder1.AppendLine(zwierze.Imie + "(id: " + zwierze.Id + ")\nData urodzenia: " + zwierze.Data_urodzenia + "\n" + zwierze.Gatunek + ", rasa: " + zwierze.Rasa + ", barwa: " + zwierze.Barwa + "\nZnaki szczególne: " + zwierze.Znaki_szczegolne + "\n");
             }
-            return base.ToString() + " " + this.numer_telefonu + " " + this.email + " " + this.adres + stringBuilder1.ToString();
+            return stringBuilder1.ToString();
         }
+
 
         public void Dodaj_pacjenta(Pacjent p)
         {
@@ -118,3 +124,4 @@ namespace Projekt_Przychodnia_weterynaryjna
         }
     }
 }
+
