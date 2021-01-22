@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
-	public class Przebyte_choroby
+	public class Przebyte_choroby : ICloneable
 	{
 		public enum Typ_choroby {wirusowa,bakteryjna, grzybiczna, pasozytnicza};
 		public enum Pasozyty {brak, pchly, kleszcze, p_wewnetrzne, wszy};
@@ -65,5 +65,10 @@ namespace Projekt_Przychodnia_weterynaryjna
         {
 			return this.nazwa_choroby + ": " + this.data_choroby.ToString("dd-MM-yyyy");
 		}
-    }
+
+		public object Clone()
+		{
+			return this.MemberwiseClone();
+		}
+	}
 }

@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
-    public abstract class Osoba
+    public abstract class Osoba : IEquatable<Osoba>
     {
         public enum Plcie { K, M, I } //I - other (inna)
 
@@ -53,6 +53,11 @@ namespace Projekt_Przychodnia_weterynaryjna
         public override string ToString()
         {
             return this.imie + " " + this.Nazwisko + " " + this.Data_urodzenia.ToString("dd-MM-yyyy") + " " + this.pesel + " " + this.plec + " ";
+        }
+
+        public bool Equals(Osoba other)
+        {
+            return this.pesel == other.pesel;
         }
     }
 }

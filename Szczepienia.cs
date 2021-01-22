@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
-	public class Szczepienia
+	public class Szczepienia : ICloneable
 	{
 		public enum Rodzaj_szczepienia { obowiazkowe, dodatkowe };
 		
@@ -47,5 +47,10 @@ namespace Projekt_Przychodnia_weterynaryjna
         {
 			return "Szczepienie: " + this.data_szczepienia.ToString("dd-MM-yyyy") + ", przeciwko: " + this.przeciw_czemu + ", zastosowany preparat: " + this.preparat;
 		}
-    }
+
+		public object Clone()
+		{
+			return this.MemberwiseClone();
+		}
+	}
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
@@ -32,6 +33,8 @@ namespace Projekt_Przychodnia_weterynaryjna
            Klient K2 = Klient.OdczytajXML("Klient.xml");
            pacjent1.ZapiszXML("Pacjent.xml");
            Pacjent P2 = Pacjent.OdczytajXML("Pacjent.xml");
+
+
         }
     }
 }
