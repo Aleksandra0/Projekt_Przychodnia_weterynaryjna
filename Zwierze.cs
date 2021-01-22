@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace Projekt_Przychodnia_weterynaryjna
 {
 
-    public abstract class Zwierze
+    public abstract class Zwierze : IEquatable<Zwierze>
     {
         public enum Plcie_zwierzat { samiec, samica };
 
@@ -74,6 +74,11 @@ namespace Projekt_Przychodnia_weterynaryjna
         public override string ToString()
         {
             return this.Imie + " " + this.Data_urodzenia.ToString("dd-MM-yyyy") + " " + this.Plec + " " + this.Gatunek + " " + this.Rasa + " " + this.Barwa + " " + this.Znaki_szczegolne + ", Wiek: " + this.Wiek().ToString();
+        }
+
+        public bool Equals(Zwierze other)
+        {
+            return this.imie == other.imie;
         }
     }
 }

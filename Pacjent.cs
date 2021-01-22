@@ -6,14 +6,14 @@ using System.Xml.Serialization;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
-    /*class idComparator : Comparer<Pacjent>
+    class idComparator : Comparer<Pacjent>
      {
          public override int Compare(Pacjent x, Pacjent y)
          {
-             return x.id.CompareTo(y.id);
+             return x.Id.ToString().CompareTo(y.Id.ToString());
          }
-     }*/
-    public class Pacjent : Zwierze//, ICloneable, IComparable<Pacjent>
+     }
+    public class Pacjent : Zwierze, ICloneable, IComparable<Pacjent>
     {
         private int id;
         private List<Przebyte_choroby> przebyte_choroby;
@@ -75,39 +75,34 @@ namespace Projekt_Przychodnia_weterynaryjna
                 return serializer.Deserialize(reader) as Pacjent;
             }
         }
-        /*public void SortujPoPESEL()
+
+        public object Clone()
         {
-            wlasciciele.Sort(new peselComparator());
+            return this.MemberwiseClone();
         }
 
-        public void Sortuj()
-        {
-            wlasciciele.Sort();
-        }*/
 
-        /*public object Clone()
+        public object ClonePacjent()
         {
             Pacjent klon = this.MemberwiseClone() as Pacjent;
-            //klon.Kierownik = this.Kierownik.Clone() as KierownikZespolu;
-            klon.wlasciciele = new List<Klient>();
-            foreach (Klient wlasciciel in wlasciciele)
-                klon.wlasciciele.Add(wlasciciel.Clone() as Klient);
-            return klon;
-        }*/
+            
+            klon.lekarz = this.lekarz.Clone() as Lekarz;
+            klon.wlasciciel = this.wlasciciel.Clone() as Klient;
+            
+            klon.przebyte_choroby = new List<Przebyte_choroby>();
+            foreach (Przebyte_choroby choroba in przebyte_choroby)
+                klon.Przebyte_choroby.Add(choroba.Clone() as Przebyte_choroby);
 
-        /*public Pacjent DeepClone()
+            klon.szczepienia = new List<Szczepienia>();
+            foreach (Szczepienia szczepienie in szczepienia)
+                klon.Szczepienia.Add(szczepienie.Clone() as Szczepienia);
+            return klon;
+        }
+
+        public int CompareTo(Pacjent other)
         {
-            //BinaryFormatter formatter = new BinaryFormatter();
-            //Stream stream = new FileStream(nazwa, FileMode.Create);
-            //formatter.Serialize(stream, this);
-            //stream.Close();
-            using (MemoryStream stream = new MemoryStream())
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(stream, this);
-                stream.Seek(0, SeekOrigin.Begin);
-                return formatter.Deserialize(stream) as Pacjent;
-            }
-        }*/
+            return this.Imie.CompareTo(other.Imie);
+        }
+
     }
 }

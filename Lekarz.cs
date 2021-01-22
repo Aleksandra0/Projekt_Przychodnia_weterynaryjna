@@ -6,7 +6,14 @@ using System.Xml.Serialization;
 
 namespace Projekt_Przychodnia_weterynaryjna
 {
-    public class Lekarz : Osoba//, IComparable<Lekarz>, ICloneable
+    class peselComparator : Comparer<Lekarz>
+    {
+        public override int Compare(Lekarz x, Lekarz y)
+        {
+            return x.Pesel.CompareTo(y.Pesel);
+        }
+    }
+    public class Lekarz : Osoba, IComparable<Lekarz>, ICloneable
     {
         private string numer_telefonu;
         private string email;
@@ -70,6 +77,10 @@ namespace Projekt_Przychodnia_weterynaryjna
             }
             return wynik;
         }
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
 
         public int CompareTo(Lekarz other)
         {
@@ -78,27 +89,6 @@ namespace Projekt_Przychodnia_weterynaryjna
             else
                 return this.Imie.CompareTo(other.Imie);
         }
-
-        /*public void Sortuj()
-        {
-            pacjenci.Sort();
-        }*/
-
-
-        /*public void SortujPoid()
-        {
-            pacjenci.Sort(new idComparator());
-        }*/
-
-        /*public object Clone()
-        {
-            Lekarz klon = this.MemberwiseClone() as Lekarz;
-            //klon.Kierownik = this.Kierownik.Clone() as KierownikZespolu;
-            klon.pacjenci = new List<Pacjent>();
-            foreach (Pacjent pacjent in pacjenci)
-                klon.pacjenci.Add(pacjent.Clone() as Klient);
-            return klon;
-        }*/
 
     }
 }
